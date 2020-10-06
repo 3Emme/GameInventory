@@ -2,16 +2,16 @@ using System.Collections.Generic;
 
 namespace GameInventory.Models
 {
-  public class User
+  public class UserProfile
   {
-    private static List<User> _instances = new List<User> { };
+    private static List<UserProfile> _instances = new List<UserProfile> { };
     public string Name { get; set; }
     public int Id { get; }
     public List<Game> Games { get; set; }
 
-    public User(string userName)
+    public UserProfile(string userProfileName)
     {
-      Name = userName;
+      Name = userProfileName;
       _instances.Add(this);
       Id = _instances.Count;
       Games = new List<Game> { };
@@ -22,12 +22,12 @@ namespace GameInventory.Models
       _instances.Clear();
     }
 
-    public static List<User> GetAll()
+    public static List<UserProfile> GetAll()
     {
       return _instances;
     }
 
-    public static User Find(int searchId)
+    public static UserProfile Find(int searchId)
     {
       return _instances[searchId - 1];
     }

@@ -1,0 +1,17 @@
+@using GameInventory.Models;
+@{
+  Layout = "_Layout";
+}
+
+<h3>Here are all the games for this UserProfile:</h3>
+
+<ol>
+@foreach (Game game in @Model["games"])
+{
+  <li><a href='/userProfiles/@Model["userProfile"].Id/games/@game.GameId'>@game.Title</a></li>
+}
+</ol>
+
+<p><a href='/userProfiles/@Model["userProfile"].Id/games/new'>Add a new game by this userProfile</a></p>
+<p><a href='/userProfiles'>Return to userProfile list</a></p>
+<p><a href='/'>Return to Main Page</a></p>

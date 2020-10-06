@@ -5,25 +5,25 @@ using GameInventory.Models;
 
 namespace GameInventory.Controllers
 {
-  public class UsersController : Controller
+  public class UserProfilesController : Controller
   {
-    // [HttpGet("/users")]
-    // public ActionResult Index()
-    // {
-    //   List<User> allUsers = User.GetAll();
-    //   return View(allUsers);
-    // }
+    [HttpGet("/userProfiles")]
+    public ActionResult Index()
+    {
+      List<UserProfile> allUserProfiles = UserProfile.GetAll();
+      return View(allUserProfiles);
+    }
 
-    [HttpGet("/users/new")]
+    [HttpGet("/userProfiles/new")]
     public ActionResult New()
     {
       return View();
     }
 
-    [HttpPost("/users")]
-    public ActionResult Create(string userName)
+    [HttpPost("/userProfiles")]
+    public ActionResult Create(string userProfileName)
     {
-      User newUser = new User(userName);
+      UserProfile newUserProfile = new UserProfile(userProfileName);
       return RedirectToAction("Index");
     }
 
