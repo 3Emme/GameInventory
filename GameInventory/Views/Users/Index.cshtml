@@ -1,0 +1,18 @@
+@using GameInventory.Models;
+@{
+  Layout = "_Layout";
+}
+
+<h1 class="jumbotron">Users</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No Users here!</h3>
+} 
+
+@foreach (User user in Model)
+{
+  <h3><a href='/users/@user.Id'>@user.Name</a></h3>
+}
+
+<p><a href='/'>Back home</a></p>
