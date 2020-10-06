@@ -14,8 +14,8 @@ namespace GameInventory.Controllers
       return View(allUserProfiles);
     }
 
-    [HttpGet("/userProfiles/new")]
-    public ActionResult New()
+    [HttpGet("/userProfiles/add")]
+    public ActionResult Add()
     {
       return View();
     }
@@ -27,16 +27,16 @@ namespace GameInventory.Controllers
       return RedirectToAction("Index");
     }
 
-    // [HttpGet("/artists/{id}")]
-    // public ActionResult Show(int id)
-    // {
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   Artist selectedArtist = Artist.Find(id);
-    //   List<Record> artistRecords = selectedArtist.Records;
-    //   model.Add("artist", selectedArtist);
-    //   model.Add("records", artistRecords);
-    //   return View(model);
-    // }
+    [HttpGet("/userProfiles/{id}")]
+    public ActionResult Show(int id)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      UserProfile selectedUserProfile = UserProfile.Find(id);
+      List<Game> userProfileGames = selectedUserProfile.Games;
+      model.Add("userProfile", selectedUserProfile);
+      model.Add("games", userProfileGames);
+      return View(model);
+    }
     // [HttpPost("/artists/{artistId}/records")]
     // public ActionResult Create(int artistId, string recordTitle)
     // {
