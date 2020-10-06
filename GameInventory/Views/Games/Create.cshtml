@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GameInventory.Models.Game
+
+<h4>Add a Game!</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Title)
+    @Html.TextBoxFor(model => model.Title)
+    @Html.LabelFor(model => model.Description)
+    @Html.TextBoxFor(model => model.Description)
+    @Html.LabelFor(model => model.ReleaseDate)
+    @Html.TextBoxFor(model => model.ReleaseDate)
+    @Html.LabelFor(model => model.Genre)
+    @Html.TextBoxFor(model => model.Genre)
+    @Html.LabelFor(model => model.Tags)
+    @Html.TextBoxFor(model => model.Tags)
+
+    <input type="submit" value="Add new game" />
+}
+<p>@Html.ActionLink("Show all items", "Index")</p>
