@@ -13,7 +13,12 @@ namespace GameInventory.Controllers
     {
       _db = db;
     }
-
+    [HttpGet("/userProfiles/{userProfileId}/games/add")]
+    public ActionResult Add(int userProfileId)
+    {
+      UserProfile userProfile = UserProfile.Find(userProfileId);
+      return View(userProfile);
+    }
     public ActionResult Index()
     {
       List<Game> model = _db.Games.ToList();
