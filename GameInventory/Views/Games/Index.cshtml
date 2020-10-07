@@ -13,12 +13,17 @@
 
 @foreach (Game game in Model)
 {
+  <li>@game.GameId . @game.Title @game.ReleaseDate</li>
   <li>@game.Description</li>
-  <li>@game.GameId</li>
-  <li>@game.Title</li>
-  <li>@game.ReleaseDate</li>
-  <li>@game.Genre</li>
-  <li>@game.Tags</li>
+  <li>@game.Genre, @game.Tags</li>
+  <br>
 }
 
 <p>@Html.ActionLink("Add new item", "Create")</p>
+<p>@Html.ActionLink("Refresh search results", "Index")</p>
+@using (Html.BeginForm())
+  {
+    @Html.Label("title")
+    @Html.TextBox("title")
+    <input type="submit" value="Search!" />
+  }

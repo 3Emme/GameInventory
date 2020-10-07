@@ -15,7 +15,8 @@ namespace GameInventory.Controllers
     }
     public ActionResult Index()
     {
-      List<Game> model = _db.Games.ToList();
+      List<Game> unsortedList = _db.Games.ToList();
+      List<Game> model = unsortedList.OrderBy(o=>o.Title).ToList();
       return View(model);
     }
     public ActionResult Create()
@@ -34,6 +35,12 @@ namespace GameInventory.Controllers
     {
       Game thisGame = _db.Games.FirstOrDefault(games => games.GameId == id);
       return View(thisGame);
+    }
+    [HttpPost]
+    public ActionResult Index(string title)
+    {
+      List<Game> model = _db.Games.Where(x => x.Title.Contains(title)).ToList();
+      return View("Index", model);
     }
   }
 }
